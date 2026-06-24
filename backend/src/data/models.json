@@ -1,0 +1,12 @@
+[
+    {
+        "name":"BERT",
+        "type":"MLM",
+        "accuracy":87.5
+    },
+    {
+        "name":"GPT-2",
+        "type":"AR",
+        "accuracy":84.2
+    }
+]
