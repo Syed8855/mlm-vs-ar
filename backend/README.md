@@ -9,5 +9,6 @@ npm run dev
 ## Endpoints
 
 GET /
+
 GET /models
 

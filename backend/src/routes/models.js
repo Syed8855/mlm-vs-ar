@@ -1,10 +1,11 @@
+//backend/src/routes/models.js
 const express = require('express');
 const router = express.Router();
 
 const {
-    getModels
+    getModel
 } = require('../controllers/modelController');
 
-router.get('/', getModels); 
+router.get('/', getModel); 
 
 module.exports = router;

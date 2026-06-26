@@ -1,5 +1,9 @@
-const models = require('../data/models.json');
+const getModel =(req,res) =>{
+    res.json({
+        message: "Backend is working"
+    });
+};
 
-exports.getModels = (req, res) => {
-    res.json(models);
+module.exports = {
+    getModel
 };

@@ -1,6 +1,7 @@
+// backend/src/server.js
 const express = require('express');
 const cors = require('cors');
-const modelRoutes = require('./routes/models');
+const modelRoute = require('./routes/models');
 const app = express();
 
 app.use(cors());
@@ -11,7 +12,7 @@ app.get('/', (req,res) => {
         message: 'MLM vs AR Benchmark API'
     });
 });
-app.use('/models' ,modelRoutes);
+app.use('/models' ,modelRoute);
 const PORT = 5000;
  app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);

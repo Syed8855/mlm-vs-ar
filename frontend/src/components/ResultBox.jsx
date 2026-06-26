@@ -2,7 +2,13 @@ function ResultBox({ result }) {
     return (
         <div className='result-box'>
             <h3>Result</h3>
-            <p>{result}</p>
+            
+            if(loading){
+                <p>Loading...</p>
+            }
+            else{
+                <p>{result}</p>
+            }
         </div>
     );
 }
