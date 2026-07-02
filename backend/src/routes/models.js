@@ -3,9 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    getModel
+    getModel,
+    generate
 } = require('../controllers/modelController');
 
 router.get('/', getModel); 
+
+const  validatePrompt = require('../middleware/validatePrompt');
+router.post('/generate', validatePrompt, generate);
 
 module.exports = router;

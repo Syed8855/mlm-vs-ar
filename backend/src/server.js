@@ -1,19 +1,11 @@
 // backend/src/server.js
-const express = require('express');
-const cors = require('cors');
-const modelRoute = require('./routes/models');
-const app = express();
+require('dotenv').config();
 
-app.use(cors());
-app.use(express.json());
+const app = require('./app');
+const config = require('./config');
 
-app.get('/', (req,res) => {
-    res.json({
-        message: 'MLM vs AR Benchmark API'
-    });
-});
-app.use('/models' ,modelRoute);
-const PORT = 5000;
+const PORT = config.port;
  app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
  });
+
