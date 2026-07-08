@@ -15,3 +15,5 @@ inputs = tokenizer(
     return_tensors ="pt"
 )
 print(inputs)
+outputs = model(**inputs)
+print(outputs.logits.shape)
