@@ -21,11 +21,28 @@ class BertBenchmark:
 
         outputs = self.model(**inputs)
 
+        mask_token_index = torch.where(
+            inputs["input_ids"] == self.tokenizer.mask_token_id
+            ).nonzero(as_tuple=True)[1]
+        
+        mask_logits = outputs.logits[0,mask_token_index, :]
+
+        probabilities = torch.softmax(mask_logits,dim=-1)
+
+        predicted_id = torch.argmax(probabilities,dim=-1)
+
+        prediction = self.tokenizer.decode(predicted_id).strip()
+
+        confidence = probabilities[0,predicted_id].item()
+
+
+
+
         metrics.stop()
 
         return BenchmarkResult(
             model="bert-base-uncased",
-            prediction="TODO",
-            confidence=0.0,
+            prediction=prediction,
+            confidence=confidence,
             inference_time=metrics.elapsed_time()
         )
