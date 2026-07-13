@@ -21,7 +21,7 @@ class BertBenchmark:
 
         outputs = self.model(**inputs)
 
-        mask_token_index = torch.where(
+        mask_token_index = (
             inputs["input_ids"] == self.tokenizer.mask_token_id
             ).nonzero(as_tuple=True)[1]
         
