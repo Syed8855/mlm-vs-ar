@@ -1,14 +1,13 @@
-function ResultBox({ result }) {
+function ResultBox({ result, }) {
     return (
         <div className='result-box'>
             <h3>Result</h3>
             
-            if(loading){
+            {loading ? (
                 <p>Loading...</p>
-            }
-            else{
-                <p>{result}</p>
-            }
+            ) : (
+                <pre>{result}</pre>
+            )}
         </div>
     );
 }

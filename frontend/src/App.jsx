@@ -11,10 +11,22 @@ function App() {
   async function handleRun() {
     try{
       setLoading(true);
-      const response = await fetch('http://localhost:5000/models');
+      const response = await fetch('http://localhost:8000/benchmark', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt : prompt }),
+      });
+      if (!response.ok) {
+        throw new Error("Server error");
+      }
       const data = await response.json();
       console.log(data);
-      setResult(data.message);
+      setResult(
+        `Prompt: ${data.received_prompt}
+        Status: ${data.status}`
+      );
     }
     catch(error){
       setResult('Error occurred while fetching data');
